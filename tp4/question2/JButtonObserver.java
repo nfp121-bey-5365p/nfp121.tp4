@@ -1,7 +1,7 @@
 package question2;
 
-//import java.awt.event. // à compléter
-//import java.awt.event. // à compléter
+import java.awt.event.*;
+import java.awt.*;// à compléter
 import java.awt.TextArea;
 
 /**
@@ -10,7 +10,7 @@ import java.awt.TextArea;
  * @author (votre nom)
  * @version (un numéro de version ou une date)
  */
-public class JButtonObserver { // à compléter
+public class JButtonObserver implements ActionListener{ 
 
     private String nom;
     private TextArea contenu;
@@ -31,15 +31,15 @@ public class JButtonObserver { // à compléter
     /**
      * affichage d'un message dans la zone de texte ce message est de la forme
      * observateur this.nom : clic du bouton nom_du_bouton exemple : observateur
-     * jbo1 : clic du bouton A, voir la méthode getActionCommand()
+     * jbo1 : clic du bouton A, voir la m�thode getActionCommand()
      * 
-     * @param à
-     *            compléter
+     * @param e
+     *            String message = "observeur "+this.nom+" : clic du bouton "+e.getActionCommand()
      */
-    public void action________/* à compléter */(/* à compléter */) {
-        String message = ""; // à compléter, inspirez-vous de l'applette de l'énoncé
+    public void actionPerformed(ActionEvent e) {
+        String message = "observeur "+this.nom+" : clic du bouton "+e.getActionCommand(); 
         contenu.append(message + "\n");
-    }
+    } 
 
 }
 

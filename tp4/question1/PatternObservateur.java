@@ -1,4 +1,5 @@
-package question1;
+        
+     package question1;
 
 public class PatternObservateur extends junit.framework.TestCase {
 
@@ -8,7 +9,7 @@ public class PatternObservateur extends junit.framework.TestCase {
 
         list = new ConcreteSubject();           // création d'un "observé" constitué d'une liste
         observer = new ConcreteObserver();      // création d'un observateur
-        list.addObserver(observer);             // ajouter cet observateur à la liste
+        list.addObserver(observer);             // ajouter cet observateur �  la liste
         list.insert("il fait beau, ce matin");  // modification de cette liste, l'observateur doit
                                                 // (dervrait) être notifié
 
@@ -30,19 +31,35 @@ public class PatternObservateur extends junit.framework.TestCase {
         // vérifier que les deux observateurs ont bien été notifiés avec les
         // bons paramètres
 
-        // à compléter !!
+        // �  compléter !!
 
         // ne pas modifier ces lignes, dernières assertions vraies de cette
         // méthode
+        
+        assertFalse(o1.senders().empty());
+        assertFalse(o2.senders().empty()); 
+        assertEquals(l1, o1.senders().pop()); //il y a 2 insertions donc 2 pop
+        assertEquals(l1, o1.senders().pop()); 
+        assertEquals(l1, o2.senders().pop());
+        assertEquals(l1, o2.senders().pop()); 
+        assertEquals(" 1 ", o1.arguments().pop());// le dernier element inserer est retourn� le premier
+        assertEquals(" 1 ", o2.arguments().pop());
+        assertEquals("test", o1.arguments().pop());
+        assertEquals("test", o2.arguments().pop());
+        
         assertTrue(o1.senders().empty() && o1.arguments().empty());
         assertTrue(o2.senders().empty() && o2.arguments().empty());
     }
 
     // deux listes, 1 observateur
     public void test2() {
+    
         question1.ConcreteSubject l1 = new question1.ConcreteSubject();
+     
         question1.ConcreteSubject l2 = new question1.ConcreteSubject();
-
+  
+        
+        
         question1.ConcreteObserver o = new question1.ConcreteObserver();
         l1.addObserver(o);
         l2.addObserver(o);
@@ -51,13 +68,16 @@ public class PatternObservateur extends junit.framework.TestCase {
         l2.insert("testB");
         l2.insert(" B ");
 
-        // à compléter à partir de la ligne 56
-        // vérifier que l'observateur a bien été notifié par les deux listes
+        assertEquals(l2, o.senders().pop());
+        assertEquals(l2, o.senders().pop());
+        assertEquals(l1, o.senders().pop());
+        assertEquals(l1, o.senders().pop());
+        
+        assertEquals(" B ", o.arguments().pop());
+        assertEquals("testB", o.arguments().pop()); 
+        assertEquals(" A ", o.arguments().pop());
+        assertEquals("testA", o.arguments().pop());
 
-        // à compléter !!
-
-        // ne pas modifier cette ligne, dernière assertion vraie de cette
-        // méthode
         assertTrue(o.senders().empty() && o.arguments().empty());
     }
 
@@ -72,18 +92,28 @@ public class PatternObservateur extends junit.framework.TestCase {
         l2.addObserver(o1);
         l2.addObserver(o2);
 
-        // à compléter à partir de la ligne 81
+        // �  compléter �  partir de la ligne 81
         // vérifier le bon fonctionnement de countObservers(), de deleteObserver
         // et deleteObservers()
 
-        // à compléter !!
+        // �  compléter !!
 
         // ne pas modifier ces lignes, dernières assertions vraies de cette
         // méthode
+     
+        assertTrue(l1.countObservers() == 2);
+        assertTrue(l2.countObservers() == 2);
+        l1.deleteObserver(o1);
+        assertTrue(l1.countObservers() == 1);
+        l1.deleteObserver(o2);
+        assertTrue(l1.countObservers() == 0);
+        l2.deleteObservers();
+        assertTrue(l2.countObservers() == 0);
+
         assertTrue(o1.senders().empty());
         assertTrue(o2.senders().empty());
         assertTrue(l1.countObservers() == 0);
-        assertTrue(l2.countObservers() == 0);
+        assertTrue(l2.countObservers() == 0);   
     }
     
 }

@@ -27,14 +27,14 @@ public class IHMQuestion2_2 extends JFrame {
         enHaut.setBackground(Color.magenta);
         
 
-        // Ã  complÃ©ter Ã  l'identique de la question 2_1, (du copier/coller)...
+        // à compléter à l'identique de la question 2_1, (du copier/coller)...
         // le bouton A a 3 observateurs jbo1, jbo2 et jbo3
 
         // le bouton B a 2 observateurs jbo1 et jbo2
 
         // le bouton C a 1 observateur jbo1
 
-        // Ã  complÃ©ter pour la question 2_2 (JMouseObserver)
+        // à compléter pour la question 2_2 (JMouseObserver)
             // le bouton A a 1 observateur jmo1
             // le bouton B a 1 observateur jmo2
             // le bouton C a 1 observateur jmo3
